@@ -32,43 +32,67 @@ Entre 50,00 e 120,00	Normal
 #include <stdio.h>
 
 int main(){
-	
-	
-	
+
+	float pre, npre, ipre, apre;
+	int cate;
+	char situ[2];
+
 	printf("Preco: \n");
 	scanf("%f", &pre);
-	
+
 	printf("Categoria: \n");
 	printf("Limpeza - [1] \n");
 	printf("Alimentacao - [2] \n");
-	pritnf("Vestuario - [3] \n");
+	printf("Vestuario - [3] \n");
 	scanf("%d", &cate);
-	
+
 	printf("Situacao: \n");
 	printf("Produtos que necessitam de refrigeracao - [r] \n");
 	printf("Produtos que não necessitam de refrigeracao - [n] \n");
 	scanf("%s", &situ);
-	
+
 	if (pre <= 25){
 		if (cate == 1){
-			npre = pre * 105 / 100;
+		apre = pre * 105 / 100;
 		}
 		else if (cate == 2){
-			npre = pre * 108 / 100;
+		apre = pre * 108 / 100;
 		}
 		else{
-			npre = pre * 110 / 100;
-		}	
+		apre = pre * 110 / 100;
+		}
 	}
 	else{
 		if (cate == 1){
-			npre = pre * 112 / 100;
+		apre = pre * 112 / 100;
 		}
 		else if (cate == 2){
-			npre = pre * 115 / 100;
+		apre = pre * 115 / 100;
 		}
 		else{
-			npre = pre * 118 / 100;
+		apre = pre * 118 / 100;
 		}
+	}
+
+	if (cate == 2 || situ[1] == 'r'){
+		ipre = pre * 105 / 100;
+	}
+	else{
+		ipre = pre * 108 / 100;
+	}
+
+	npre = apre + ipre;
+
+	if (npre <= 50){
+		printf("Promocao! \n");
+		printf("Preco a pagar: %.2f",npre);
+	}
+	else if (npre >= 120){
+		printf("Extra! \n");
+		printf("Preco a pagar: %.2f",npre);
+	}
+	else{
+		printf("Normal! \n");
+		printf("Preco a pagar: %.2f",npre);
 	}
 }
